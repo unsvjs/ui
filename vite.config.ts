@@ -1,8 +1,9 @@
 import { defaultTheme } from "@sveltepress/theme-default";
 import { sveltepress } from "@sveltepress/vite";
 import { defineConfig } from "vite";
+import { ui } from "./src";
 
-const config = defineConfig({
+export default defineConfig({
   plugins: [
     sveltepress({
       theme: defaultTheme({
@@ -30,8 +31,15 @@ const config = defineConfig({
               ],
             },
           ],
+          Components: [
+            {
+              title: "Components",
+              collapsible: true,
+              items: [{ title: "Button", to: "/components/button" }],
+            },
+          ],
         },
-        github: "https://github.com/unsvjs",
+        github: "https://github.com/unsvjs/ui",
         logo: "/sveltepress.svg",
       }),
       siteConfig: {
@@ -39,7 +47,6 @@ const config = defineConfig({
         description: "a ui library for the rest of us",
       },
     }),
+    ui(),
   ],
 });
-
-export default config;
